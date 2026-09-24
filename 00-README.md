@@ -1,6 +1,6 @@
-Pre-existing background material of the author. First published 2026-09-24 as release package-v1.0.0 at https://github.com/thoughtform-co/practice-snapshot/releases/tag/package-v1.0.0. Cite entries by their BG id.
+Pre-existing background material of the author. First published 2026-09-24 as release package-v1.0.1 at https://github.com/thoughtform-co/practice-snapshot/releases/tag/package-v1.0.1. Cite entries by their BG id.
 
-# Practice snapshot, package v1.0.0
+# Practice snapshot, package v1.0.1
 
 Six files that describe how one intelligence architect works, at the level of ideas: what the practice believes, the vocabulary it uses, and the shape of a working session on evals. Written before any engagement it is used in, dated, and published so that the date can be checked by anyone.
 

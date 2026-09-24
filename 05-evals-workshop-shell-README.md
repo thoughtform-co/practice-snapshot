@@ -1,4 +1,4 @@
-Pre-existing background material of the author. First published 2026-09-24 as release package-v1.0.0 at https://github.com/thoughtform-co/practice-snapshot/releases/tag/package-v1.0.0. Cite entries by their BG id.
+Pre-existing background material of the author. First published 2026-09-24 as release package-v1.0.1 at https://github.com/thoughtform-co/practice-snapshot/releases/tag/package-v1.0.1. Cite entries by their BG id.
 
 # The evals workshop shell
 
@@ -34,7 +34,9 @@ The rail on the right shows one tick per section; click a tick to jump. The addr
 
 ## Adding, removing or reordering a section
 
-Copy one `<section>` block in the `<main class="deck">`, give it a new `id` and `data-kicker`, replace the headline, sub and picture, and place it where it belongs. The script numbers the sections, assigns the bands and builds the rail; nothing is hand-numbered. For a beat, use `class="beat"` and leave out the picture. Keep one picture per section: a single object, never a list of images.
+Copy one `<section>` block in the `<main class="deck">`, give it a new `id` and `data-kicker`, replace the headline, sub and picture, and place it where it belongs. The sections number themselves, the bands alternate by position, and the script builds the rail; nothing is hand-numbered. For a beat, use `class="beat"` and leave out the picture. Keep one picture per section: a single object, never a list of images.
+
+Where scripts cannot run (a locked-down viewer, a document preview pane), the page falls back to a scrolling document with one section per screen. Everything is still readable; only the keys and the rail need the script.
 
 ## Pictures
 

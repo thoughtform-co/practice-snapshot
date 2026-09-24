@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <!--
   Pre-existing background material of the author. First published 2026-09-24 as
-  release package-v1.0.0 at
-  https://github.com/thoughtform-co/practice-snapshot/releases/tag/package-v1.0.0.
+  release package-v1.0.1 at
+  https://github.com/thoughtform-co/practice-snapshot/releases/tag/package-v1.0.1.
   Cite entries by their BG id. This file is BG-14 in the provenance manifest.
 
   THE SHAPE. A thin bar, a hero, seven to sixteen sections, a colophon. Every
@@ -17,7 +17,8 @@
 
   KEYS: Right/Down/PageDown/Space next; Left/Up/PageUp previous; Home/End;
   F full screen; P print. The rail on the right jumps. #s=<n> links a section.
-  ?check=1 writes a geometry report into the colophon.
+  ?check=1 writes a geometry report into the colophon. Where scripts cannot
+  run, the page is a scrolling document, one section per screen.
 
   Written fresh on 2026-09-24. Placeholder words and pictures, meant to be replaced.
 -->
@@ -26,7 +27,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Checking AI work</title>
+<script>document.documentElement.className += ' js';</script>
 <style>
+/* Without scripts (a locked-down viewer, a preview pane) the page is a
+   scrolling document, one section per screen. With scripts it is a deck:
+   one section at a time, keys and rail. The `js` class on <html> switches. */
 :root {
   --ink: #1c1c20;
   --paper: #f8f6f1;
@@ -47,9 +52,10 @@ body {
   background: var(--paper);
   color: var(--ink);
   font-family: var(--font-body);
-  overflow: hidden;
+  overflow: auto;
   -webkit-font-smoothing: antialiased;
 }
+.js body { overflow: hidden; }
 [hidden] { display: none !important; }
 
 /* The bar */
@@ -60,13 +66,15 @@ body {
   border-bottom: 1px solid var(--rule); background: var(--paper); z-index: 3;
 }
 .topbar .title { letter-spacing: 0.02em; }
-.topbar .counter { font-family: var(--font-mono); }
+.topbar .counter { font-family: var(--font-mono); display: none; }
+.js .topbar .counter { display: inline; }
 
 /* The rail */
 .rail {
   position: fixed; right: 18px; top: 50%; transform: translateY(-50%);
-  display: flex; flex-direction: column; gap: 10px; z-index: 3;
+  display: none; flex-direction: column; gap: 10px; z-index: 3;
 }
+.js .rail { display: flex; }
 .rail button {
   width: 10px; height: 10px; padding: 0; border: 1px solid var(--muted);
   border-radius: 50%; background: transparent; cursor: pointer;
@@ -74,14 +82,17 @@ body {
 .rail button.on { background: var(--accent); border-color: var(--accent); }
 .rail button:focus { outline: 2px solid var(--accent); outline-offset: 2px; }
 
-/* A section */
+/* A section: one screen tall. Without scripts the sections follow each
+   other down the page; with scripts each one is laid over the same screen
+   and the script shows one at a time. Bands alternate by position. */
 .deck > section {
-  position: absolute; inset: 0;
+  position: relative; min-height: 100vh;
   padding: 76px 96px 56px 72px;
   display: grid; grid-template-columns: 1.05fr 1fr; gap: 48px; align-items: center;
 }
-.deck > section.band-b { background: var(--band-b); }
-.deck > section.band-a { background: var(--band-a); }
+.js .deck > section { position: absolute; inset: 0; min-height: 0; }
+.deck > section:nth-child(odd) { background: var(--band-a); }
+.deck > section:nth-child(even) { background: var(--band-b); }
 .words h2 {
   font-family: var(--font-head); font-weight: 400; font-size: 42px; line-height: 1.08;
   margin: 0 0 20px; letter-spacing: -0.01em;
@@ -139,9 +150,9 @@ body {
 @media print {
   html, body { height: auto; overflow: visible; background: #fff; }
   .topbar, .rail { display: none !important; }
-  .deck > section, .deck > section[hidden] {
+  .deck > section, .deck > section[hidden], .js .deck > section {
     display: grid !important; position: static; inset: auto;
-    height: 180mm; max-height: 180mm; overflow: hidden;
+    height: 180mm; max-height: 180mm; min-height: 0; overflow: hidden;
     padding: 10mm 12mm; gap: 12mm; break-inside: avoid; page-break-inside: avoid;
     background: #fff !important;
   }
@@ -517,7 +528,7 @@ body {
       <h2>Not research and not a measurement.</h2>
       <p>A working session's page, written to be run in a room and printed as a handout. The examples are placeholders; replace them with the room's own work.</p>
       <p>This session's words are the author's; the ideas trace to the practice snapshot beside this file (BG-09 for evals, BG-15 for why a check is not optional, BG-14 for the shape of this page).</p>
-      <div class="provenance">This page's shell: pre-existing background material of the author, release package-v1.0.0, 2026-09-24. Cite as BG-14. Replace the words and the pictures; keep this line off any customer-facing print.</div>
+      <div class="provenance">This page's shell: pre-existing background material of the author, release package-v1.0.1, 2026-09-24. Cite as BG-14. Replace the words and the pictures; keep this line off any customer-facing print.</div>
       <pre id="check" hidden></pre>
     </div>
     <div class="reading">
@@ -542,7 +553,6 @@ body {
   var current = 0;
 
   sections.forEach(function (s, i) {
-    s.classList.add(i % 2 ? 'band-b' : 'band-a');
     var b = document.createElement('button');
     b.type = 'button';
     b.title = s.getAttribute('data-kicker') || String(i + 1);

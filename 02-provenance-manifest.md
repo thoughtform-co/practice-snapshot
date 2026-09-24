@@ -1,4 +1,4 @@
-Pre-existing background material of the author. First published 2026-09-24 as release package-v1.0.0 at https://github.com/thoughtform-co/practice-snapshot/releases/tag/package-v1.0.0. Cite entries by their BG id.
+Pre-existing background material of the author. First published 2026-09-24 as release package-v1.0.1 at https://github.com/thoughtform-co/practice-snapshot/releases/tag/package-v1.0.1. Cite entries by their BG id.
 
 # Provenance manifest
 
