@@ -1,0 +1,2 @@
+# Published byte for byte; a checkout on any machine keeps the released LF bytes.
+* text eol=lf

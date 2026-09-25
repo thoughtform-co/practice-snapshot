@@ -1,4 +1,4 @@
-Pre-existing background material of the author. First published 2026-09-24 as release package-v1.0.1 at https://github.com/thoughtform-co/practice-snapshot/releases/tag/package-v1.0.1. Cite entries by their BG id.
+Pre-existing background material of the author. First published 2026-09-24 as release package-v1.0.0; this is release package-v1.0.2 of 2026-09-25, at https://github.com/thoughtform-co/practice-snapshot/releases/tag/package-v1.0.2. Cite entries by their BG id.
 
 # Provenance manifest
 
@@ -45,4 +45,4 @@ One row per piece of evidence, grouped by idea. The first dated evidence of an i
 |  |  |  |  | method skill, private git, file 1365847a, first commit 507e712 | git-file | private |  |
 |  |  |  |  | https://thoughtform.co/musings/the-model-has-a-dialect (published 2026-09-24, fdabe735) | url | public | post-dates: public text is newer than the idea; corroboration only |
 
-Generated from the author's own record on 2026-09-24. Cutoff for pre-existence: 2026-08-28.
+Generated from the author's own record on 2026-09-25. Cutoff for pre-existence: 2026-08-28.
